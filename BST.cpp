@@ -1,5 +1,7 @@
 #include "BST.h"
 #include <iostream>
+using std::cout;
+using std::endl;
 
 template <typename T>
 BST<T>::BST() {
@@ -14,9 +16,22 @@ BST<T>::~BST() {
 
 template <typename T>
 bool BST<T>::find(T v) {
-  Node<T>* temp = new Node<T>(v);
-  root = temp;  
-  return true;
+	Node<T>** curr =&root;
+	
+	while(*curr!=0 && (*curr)->getValue()!= v) {
+		if (v < (*curr)->getValue()) {
+			curr = &((*curr)->getLeftChild());
+		} else if (v > (*curr)->getValue()) {
+			curr = &((*curr)->getRightChild());
+		}    
+	}
+	
+	if (*curr==0) {
+		return false;
+	}
+	else {
+		return true;
+	}
 }
 
 template <typename T>
@@ -36,8 +51,41 @@ void BST<T>::insert(T v) {
 
 template <typename T>
 void BST<T>::remove(T v) {
-  Node<T>* temp = new Node<T>(v);
-  root = temp;
+  Node<T>** curr =&root;
+  Node<T>* parent;
+	
+  //is v in tree?
+  while(*curr!=0 && (*curr)->getValue()!= v) {
+	  parent = *curr;	  
+	  if (v < (*curr)->getValue()) {
+		  curr = &((*curr)->getLeftChild());
+	  } else if (v > (*curr)->getValue()) {
+		  curr = &((*curr)->getRightChild());
+	  }    
+  }
+	
+  //v not found
+  if (*curr==0) {
+	cout << v << " is not in this tree." <<endl;
+	return;
+  }
+	
+  //v is Found
+  else if ((*curr)->getValue()==v) {
+	cout << "Found " << v << endl;	
+	
+	//if node has no children, simply remove
+	if ((*curr)->getLeftChild()==0 && (*curr)->getRightChild()==0) {
+	  cout << v << " is a leaf" << endl;
+	  cout << "Parent is " << parent->getValue() << endl;
+	  //if (parent->getValue()>(*curr)->getValue())
+		  //parent->setLeftChild(0);
+	}
+	
+    //if right child exists, get in-order successor
+	  
+	//if only left child exists, cut out v node
+  }
 }
 
 template <typename T>
