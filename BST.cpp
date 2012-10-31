@@ -80,7 +80,7 @@ void BST<T>::remove(T v) {
 		while (iop->getRightChild()!=0) {
 		  iop = iop->getRightChild();	
 		}
-		//iop->setRighChild(*(nodeToRemove->getRightChild()));
+		iop->setRightChild(*(nodeToRemove->getRightChild()));
 		*curr=nodeToRemove->getLeftChild();
 	}	  
 	delete nodeToRemove;
