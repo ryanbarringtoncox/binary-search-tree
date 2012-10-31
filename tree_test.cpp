@@ -16,18 +16,21 @@ int main() {
 
   bst->print();
 
-  cout << "Is 5 in tree?" << endl;
-  bst->remove(5);
-  cout << "Is 6 in tree?" << endl;
+  //cout << "Is 5 in tree?" << endl;
+  //bst->remove(5);
+  cout << "Removing 6" << endl;
   bst->remove(6);
-  cout << "Is 13 in tree?" << endl;
+  cout << "Removing 13" << endl;
   bst->remove(13);
-  cout << "Is 12 in tree?" << endl;
+  cout << "Removing 12" << endl;
   bst->remove(12);
-  cout << "Is 50 in tree?" << endl;
-  bst->remove(50);
-  cout << "Is 2 in tree?" << endl;
-  bst->remove(2);
-  cout << "Is 4 in tree?" << endl;
-  bst->remove(4);	
+  //cout << "Is 50 in tree?" << endl;
+  //bst->remove(50);
+  //cout << "Is 2 in tree?" << endl;
+  //bst->remove(2);
+  cout << "Removing 2" << endl;
+  bst->remove(2);	
+	
+  bst->print();
+	
 }

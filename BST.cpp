@@ -52,11 +52,9 @@ void BST<T>::insert(T v) {
 template <typename T>
 void BST<T>::remove(T v) {
   Node<T>** curr =&root;
-  Node<T>* parent;
 	
   //is v in tree?
   while(*curr!=0 && (*curr)->getValue()!= v) {
-	  parent = *curr;	  
 	  if (v < (*curr)->getValue()) {
 		  curr = &((*curr)->getLeftChild());
 	  } else if (v > (*curr)->getValue()) {
@@ -66,25 +64,26 @@ void BST<T>::remove(T v) {
 	
   //v not found
   if (*curr==0) {
-	cout << v << " is not in this tree." <<endl;
 	return;
   }
 	
   //v is Found
-  else if ((*curr)->getValue()==v) {
-	cout << "Found " << v << endl;	
-	
-	//if node has no children, simply remove
-	if ((*curr)->getLeftChild()==0 && (*curr)->getRightChild()==0) {
-	  cout << v << " is a leaf" << endl;
-	  cout << "Parent is " << parent->getValue() << endl;
-	  //if (parent->getValue()>(*curr)->getValue())
-		  //parent->setLeftChild(0);
+  else {
+	Node<T>* nodeToRemove = *curr;	
+	//no left child
+	if ((nodeToRemove)->getLeftChild()==0) {
+		*curr=nodeToRemove->getRightChild();
 	}
-	
-    //if right child exists, get in-order successor
-	  
-	//if only left child exists, cut out v node
+	//if there's a left child find in-order-predecessor
+	else {
+		Node<T>* iop = nodeToRemove->getLeftChild();
+		while (iop->getRightChild()!=0) {
+		  iop = iop->getRightChild();	
+		}
+		//iop->setRighChild(*(nodeToRemove->getRightChild()));
+		*curr=nodeToRemove->getLeftChild();
+	}	  
+	delete nodeToRemove;
   }
 }
 
