@@ -1,5 +1,7 @@
 #include "BST.h"
 #include <iostream>
+#include <list>
+using namespace std;
 using std::cout;
 using std::endl;
 
@@ -85,6 +87,23 @@ void BST<T>::remove(T v) {
 	}	  
 	delete nodeToRemove;
   }
+}
+
+template <typename T>
+void BST<T>::visualPrint() {
+	list<Node<T>*> q;
+	q.push_back (root);
+	
+	Node<T>* curr;
+	while (!(q.empty())) {
+		curr = q.front();
+		cout << " " << endl;
+		if (curr->getLeftChild()!=0) q.push_back (curr->getLeftChild());
+		if (curr->getRightChild()!=0) q.push_back (curr->getRightChild());		
+		if (curr!=0) cout << curr->getValue();
+		q.pop_front();				
+	}
+	
 }
 
 template <typename T>
