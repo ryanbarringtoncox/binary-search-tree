@@ -2,6 +2,7 @@
 #define __BST_H__
 
 #include "Node.h"
+#include "Glob.h"
 #include <string>
 
 template <typename T>

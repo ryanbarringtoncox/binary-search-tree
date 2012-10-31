@@ -15,7 +15,6 @@ BST<T>::~BST() {
   
 }
 
-
 template <typename T>
 bool BST<T>::find(T v) {
 	Node<T>** curr =&root;
@@ -93,15 +92,16 @@ template <typename T>
 void BST<T>::visualPrint() {
 	list<Node<T>*> q;
 	q.push_back (root);
-	
+	int level=0;
 	Node<T>* curr;
 	while (!(q.empty())) {
 		curr = q.front();
-		cout << " " << endl;
+		cout << "Level " << level << endl;
 		if (curr->getLeftChild()!=0) q.push_back (curr->getLeftChild());
 		if (curr->getRightChild()!=0) q.push_back (curr->getRightChild());		
 		if (curr!=0) cout << curr->getValue();
-		q.pop_front();				
+		q.pop_front();	
+		level++;
 	}
 	
 }
