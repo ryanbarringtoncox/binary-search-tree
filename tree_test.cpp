@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 
 int main() {
-  
+	
   BST<std::string>* s = new BST<std::string>();
 	
   s->insert("mop");
@@ -21,7 +21,7 @@ int main() {
   s->insert("bic");
   s->insert("sow");	
 		
-  s->visualPrint("   ", " / ", "  \\ ");
+  s->visualPrint("   ", " / ", " \\ ");
 
   cout << "Removing zoo" << endl;
   s->remove("zoo");

@@ -91,16 +91,16 @@ void BST<T>::remove(T v) {
 
 template <typename T>
 void BST<T>::visualPrint(T def, T leftLeg, T rightLeg) {
-	cout << "Yer legs are " << leftLeg << " and " << rightLeg << endl;;
+
 	//make a Queue of globs, push in root at 0, 0
 	list<Glob<T>*> q;
 	int level=0; int spread=0;
 	Glob<T>* root_glob = new Glob<T>(*root, level, spread);
 	q.push_back (root_glob);
 	
-	//make an sxl 2d vector for glob coordinates, spread is width, level is depth
+	//make 2d vector for glob coordinates, spread is width, level is depth
 	int s; int l;
-	TwoDArray<T>* tda = new TwoDArray<T>(20, 20, def);
+	TwoDArray<T>* tda = new TwoDArray<T>(14, 20, def);
 	int spread_middle = 10;
 	
 	//begin level order traversal of BST and insert into tda
@@ -128,7 +128,6 @@ void BST<T>::visualPrint(T def, T leftLeg, T rightLeg) {
 		if (curr_node!=0) {
 			l = curr_glob->getLevel();
 			s = curr_glob->getSpread();
-			//cout << "Adding " << curr_glob->getNodePointer()->getValue() << "at " << spread_middle+s << + "," << l << endl;
 			tda->insert(l, spread_middle+s, curr_glob->getNodePointer()->getValue());
 		}
 		q.pop_front();	
