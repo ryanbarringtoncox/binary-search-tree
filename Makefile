@@ -8,8 +8,8 @@ ttest: tree_test.cpp BST.o Node.o Glob.o
 BST.o: BST.h BST.cpp
 	$(CPP) $(CFLAGS) -c BST.cpp
 
-ntest: node_test.cpp Node.o
-	$(CPP) $(CFLAGS) -o ntest node_test.cpp Node.o
+ntest: node_test.cpp Node.o Glob.o
+	$(CPP) $(CFLAGS) -o ntest node_test.cpp Node.o Glob.o
 
 Node.o: Node.h Node.cpp
 	$(CPP) $(CFLAGS) -c Node.cpp

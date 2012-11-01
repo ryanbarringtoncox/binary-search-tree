@@ -4,6 +4,7 @@
 #include <string>
 #include "Node.h"
 
+//A glob has a node pointer and an associated level, used for printing BST
 template <typename T>
 class Glob {
 private:
@@ -11,10 +12,10 @@ private:
 	int level;
 	
 public:
-	Glob<T>(Node<T>* nodePointer, int l);
-	~Glob<T>();
+	Glob<T>(Node<T>& nodePointer, int l);
+	//~Glob<T>();
 	
-	Node<T>* getNodePointer();
+	Node<T>*& getNodePointer();
 	int getLevel();
 };
 

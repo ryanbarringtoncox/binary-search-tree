@@ -1,6 +1,9 @@
 #include "Node.h"
+#include "Glob.h"
 #include <string>
 #include <iostream>
+using std::endl;
+using std::cout;
 
 using std::string;
 
@@ -14,5 +17,10 @@ int main() {
   std::cout << ni->getValue()<< std::endl;
   std::cout << nd->getValue()<< std::endl;
 
+  Glob<int>* g = new Glob<int>(*ni, 0);
+	
+  cout << "Glob pointer has value " << ((g->getNodePointer())->getValue()) << endl;
+  cout << "Has level of " << g->getLevel() << endl;
+	
   return 0;
 }

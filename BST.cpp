@@ -90,20 +90,33 @@ void BST<T>::remove(T v) {
 
 template <typename T>
 void BST<T>::visualPrint() {
-	list<Node<T>*> q;
-	q.push_back (root);
+	list<Glob<T>*> q;
 	int level=0;
-	Node<T>* curr;
+	Glob<T>* curr = new Glob<T>(*root, level);
+	q.push_back (curr);
+	Node<T>* curr_node;
 	while (!(q.empty())) {
-		curr = q.front();
-		cout << "Level " << level << endl;
-		if (curr->getLeftChild()!=0) q.push_back (curr->getLeftChild());
-		if (curr->getRightChild()!=0) q.push_back (curr->getRightChild());		
-		if (curr!=0) cout << curr->getValue();
+		//level++;		
+		Glob<T>* curr_glob = q.front();
+		curr_node = curr_glob->getNodePointer();
+		if (curr_node->getLeftChild()!=0) {
+			level = (curr_glob->getLevel())+1;
+			Glob<T>* new_glob_left = new Glob<T>(*(curr_node->getLeftChild()), level);
+			q.push_back (new_glob_left);
+		}
+		if (curr_node->getRightChild()!=0) {
+			level=(curr_glob->getLevel())+1;
+			Glob<T>* new_glob_right = new Glob<T>(*(curr_node->getRightChild()), level);
+			q.push_back (new_glob_right);
+		}		
+		//if (curr->getRightChild()!=0) q.push_back (curr->getRightChild());		
+		if (curr_node!=0) {
+			cout << "Curr glob level: " << curr_glob->getLevel() << endl;
+			cout << "   value is: " << curr_glob->getNodePointer()->getValue() << endl;
+			//g->getLevel()
+		}
 		q.pop_front();	
-		level++;
 	}
-	
 }
 
 template <typename T>
