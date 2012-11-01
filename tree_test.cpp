@@ -11,7 +11,7 @@ int main() {
   s->insert("mop");
   s->insert("kid");
   s->insert("org");
-  s->insert("ole");
+  s->insert("ark");
   s->insert("bed");
   s->insert("orr");
   s->insert("toe");
@@ -23,25 +23,19 @@ int main() {
 		
   s->visualPrint("   ");
 
-  /*bst->print();
-
-  cout << "Removing 5" << endl;
-  bst->remove(5);
-  cout << "Removing 6" << endl;
-  bst->remove(6);
-  //cout << "Removing 13" << endl;
-  //bst->remove(13);
-  cout << "Removing 12" << endl;
-  bst->remove(12);
-  //cout << "Is 50 in tree?" << endl;
-  //bst->remove(50);
-  //cout << "Is 2 in tree?" << endl;
-  //bst->remove(2);
-  cout << "Removing 2" << endl;
-  bst->remove(2);	
+  cout << "Removing zoo" << endl;
+  s->remove("zoo");
+  cout << "Removing ape" << endl;
+  s->remove("ape");
+  cout << "Removing bic" << endl;
+  s->remove("bic");
 	
-  bst->print();
-   
-  */
+  s->visualPrint("   ");
+	
+  cout << "inserting tee, sir... " << endl;
+  s->insert("tee");
+  s->insert("sir");
+	
+  s->visualPrint("   ");
 	
 }

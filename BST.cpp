@@ -123,7 +123,7 @@ void BST<T>::visualPrint(T def) {
 		if (curr_node!=0) {
 			l = curr_glob->getLevel();
 			s = curr_glob->getSpread();
-			cout << "Adding " << curr_glob->getNodePointer()->getValue() << "at " << spread_middle+s << + "," << l << endl;
+			//cout << "Adding " << curr_glob->getNodePointer()->getValue() << "at " << spread_middle+s << + "," << l << endl;
 			tda->insert(l, spread_middle+s, curr_glob->getNodePointer()->getValue());
 		}
 		q.pop_front();	
