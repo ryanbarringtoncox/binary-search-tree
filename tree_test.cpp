@@ -1,20 +1,27 @@
 #include "BST.h"
 #include <iostream>
+#include <string>
 using std::cout;
 using std::endl;
 
 int main() {
-  BST<int>* bst = new BST<int>();
-
-  bst->insert(5);
-  bst->insert(6);
-  bst->insert(3);
-  bst->insert(2);
-  bst->insert(7);
-  bst->insert(12);
-  bst->insert(4);
+  
+  BST<std::string>* s = new BST<std::string>();
 	
-  bst->visualPrint();
+  s->insert("mop");
+  s->insert("kid");
+  s->insert("org");
+  s->insert("ole");
+  s->insert("bed");
+  s->insert("orr");
+  s->insert("toe");
+  s->insert("zoo");
+  s->insert("ape");
+  s->insert("abe");
+  s->insert("bic");
+  s->insert("sow");	
+		
+  s->visualPrint("   ");
 
   /*bst->print();
 

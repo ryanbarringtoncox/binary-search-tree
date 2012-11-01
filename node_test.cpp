@@ -17,10 +17,11 @@ int main() {
   std::cout << ni->getValue()<< std::endl;
   std::cout << nd->getValue()<< std::endl;
 
-  Glob<int>* g = new Glob<int>(*ni, 0);
+  Glob<int>* g = new Glob<int>(*ni, 0, -8);
 	
   cout << "Glob pointer has value " << ((g->getNodePointer())->getValue()) << endl;
   cout << "Has level of " << g->getLevel() << endl;
+  cout << "Has spread of " << g->getSpread() << endl;
 	
   return 0;
 }

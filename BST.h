@@ -3,6 +3,7 @@
 
 #include "Node.h"
 #include "Glob.h"
+#include "TwoDArray.h"
 #include <string>
 
 template <typename T>
@@ -19,7 +20,7 @@ class BST {
   void remove(T v);
   void insert(T v);
   void print();
-  void visualPrint();
+  void visualPrint(T def);
 };
 
 

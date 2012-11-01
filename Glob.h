@@ -10,13 +10,15 @@ class Glob {
 private:
 	Node<T>* n;
 	int level;
+	int spread;
 	
 public:
-	Glob<T>(Node<T>& nodePointer, int l);
-	//~Glob<T>();
+	Glob<T>(Node<T>& nodePointer, int l, int s);
+	~Glob<T>();
 	
 	Node<T>*& getNodePointer();
 	int getLevel();
+	int getSpread();
 };
 
 

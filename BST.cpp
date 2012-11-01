@@ -1,6 +1,7 @@
 #include "BST.h"
 #include <iostream>
 #include <list>
+#include <vector>
 using namespace std;
 using std::cout;
 using std::endl;
@@ -89,34 +90,45 @@ void BST<T>::remove(T v) {
 }
 
 template <typename T>
-void BST<T>::visualPrint() {
+void BST<T>::visualPrint(T def) {
+	//make a Queue of globs, push in root
 	list<Glob<T>*> q;
 	int level=0;
-	Glob<T>* curr = new Glob<T>(*root, level);
-	q.push_back (curr);
+	int spread=0;
+	Glob<T>* root_glob = new Glob<T>(*root, level, spread);
+	q.push_back (root_glob);
+	
+	//make a 20x20 2d vector for glob coordinates, spread is width, level is depth
+	int s;
+	int l;
+	TwoDArray<T>* tda = new TwoDArray<T>(20, 20, def);
+	int spread_middle = 10;
+	
 	Node<T>* curr_node;
 	while (!(q.empty())) {
-		//level++;		
 		Glob<T>* curr_glob = q.front();
 		curr_node = curr_glob->getNodePointer();
 		if (curr_node->getLeftChild()!=0) {
 			level = (curr_glob->getLevel())+1;
-			Glob<T>* new_glob_left = new Glob<T>(*(curr_node->getLeftChild()), level);
+			spread = (curr_glob->getSpread())-2;
+			Glob<T>* new_glob_left = new Glob<T>(*(curr_node->getLeftChild()), level, spread);
 			q.push_back (new_glob_left);
 		}
 		if (curr_node->getRightChild()!=0) {
 			level=(curr_glob->getLevel())+1;
-			Glob<T>* new_glob_right = new Glob<T>(*(curr_node->getRightChild()), level);
+			spread = (curr_glob->getSpread())+2;
+			Glob<T>* new_glob_right = new Glob<T>(*(curr_node->getRightChild()), level, spread);
 			q.push_back (new_glob_right);
 		}		
-		//if (curr->getRightChild()!=0) q.push_back (curr->getRightChild());		
 		if (curr_node!=0) {
-			cout << "Curr glob level: " << curr_glob->getLevel() << endl;
-			cout << "   value is: " << curr_glob->getNodePointer()->getValue() << endl;
-			//g->getLevel()
+			l = curr_glob->getLevel();
+			s = curr_glob->getSpread();
+			cout << "Adding " << curr_glob->getNodePointer()->getValue() << "at " << spread_middle+s << + "," << l << endl;
+			tda->insert(l, spread_middle+s, curr_glob->getNodePointer()->getValue());
 		}
 		q.pop_front();	
 	}
+	tda->print();
 }
 
 template <typename T>

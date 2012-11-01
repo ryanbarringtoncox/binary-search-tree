@@ -2,7 +2,7 @@ CPP = g++
 CFLAGS = -Wall -Wextra -Werror
 
 
-ttest: tree_test.cpp BST.o Node.o Glob.o
+ttest: tree_test.cpp BST.o Node.o Glob.o TwoDArray.o
 	$(CPP) $(CFLAGS) -o ttest $^
 
 BST.o: BST.h BST.cpp
@@ -16,6 +16,9 @@ Node.o: Node.h Node.cpp
 
 Glob.o: Glob.h Glob.cpp
 	$(CPP) $(CFLAGS) -c Glob.cpp
+
+TwoDArray.o: TwoDArray.h TwoDArray.cpp
+	$(CPP) $(CFLAGS) -c TwoDArray.cpp
 
 clean:
 	rm -f *.o;
