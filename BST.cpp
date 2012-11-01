@@ -129,6 +129,8 @@ void BST<T>::visualPrint(T def) {
 		q.pop_front();	
 	}
 	tda->print();
+	delete tda;
+	delete root_glob;
 }
 
 template <typename T>

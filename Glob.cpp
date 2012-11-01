@@ -14,7 +14,6 @@ Glob<T>::Glob(Node<T>& nodePointer, int l, int s) {
 
 template <typename T>
 Glob<T>::~Glob() {
-	delete n;
 }
 
 
