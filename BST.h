@@ -20,7 +20,7 @@ class BST {
   void remove(T v);
   void insert(T v);
   void print();
-  void visualPrint(T def);
+  void visualPrint(T def, T leftLeg, T rightLeg);
 };
 
 

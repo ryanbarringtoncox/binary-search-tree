@@ -90,35 +90,40 @@ void BST<T>::remove(T v) {
 }
 
 template <typename T>
-void BST<T>::visualPrint(T def) {
-	//make a Queue of globs, push in root
+void BST<T>::visualPrint(T def, T leftLeg, T rightLeg) {
+	cout << "Yer legs are " << leftLeg << " and " << rightLeg << endl;;
+	//make a Queue of globs, push in root at 0, 0
 	list<Glob<T>*> q;
-	int level=0;
-	int spread=0;
+	int level=0; int spread=0;
 	Glob<T>* root_glob = new Glob<T>(*root, level, spread);
 	q.push_back (root_glob);
 	
-	//make a 20x20 2d vector for glob coordinates, spread is width, level is depth
-	int s;
-	int l;
+	//make an sxl 2d vector for glob coordinates, spread is width, level is depth
+	int s; int l;
 	TwoDArray<T>* tda = new TwoDArray<T>(20, 20, def);
 	int spread_middle = 10;
 	
+	//begin level order traversal of BST and insert into tda
 	Node<T>* curr_node;
 	while (!(q.empty())) {
 		Glob<T>* curr_glob = q.front();
 		curr_node = curr_glob->getNodePointer();
 		if (curr_node->getLeftChild()!=0) {
-			level = (curr_glob->getLevel())+1;
+			//get level, spread for left node and make a glob
+			level = (curr_glob->getLevel())+2;
 			spread = (curr_glob->getSpread())-2;
 			Glob<T>* new_glob_left = new Glob<T>(*(curr_node->getLeftChild()), level, spread);
 			q.push_back (new_glob_left);
+			//insert left leg into tda
+			tda->insert(level-1, spread_middle+spread+1, leftLeg);
 		}
 		if (curr_node->getRightChild()!=0) {
-			level=(curr_glob->getLevel())+1;
+			level=(curr_glob->getLevel())+2;
 			spread = (curr_glob->getSpread())+2;
 			Glob<T>* new_glob_right = new Glob<T>(*(curr_node->getRightChild()), level, spread);
 			q.push_back (new_glob_right);
+			//insert right leg tda
+			tda->insert(level-1, spread_middle+spread-1, rightLeg);			
 		}		
 		if (curr_node!=0) {
 			l = curr_glob->getLevel();

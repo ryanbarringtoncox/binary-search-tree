@@ -21,7 +21,7 @@ int main() {
   s->insert("bic");
   s->insert("sow");	
 		
-  s->visualPrint("   ");
+  s->visualPrint("   ", " / ", "  \\ ");
 
   cout << "Removing zoo" << endl;
   s->remove("zoo");
@@ -30,12 +30,12 @@ int main() {
   cout << "Removing bic" << endl;
   s->remove("bic");
 	
-  s->visualPrint("   ");
+  s->visualPrint("   ", " / ", " \\ ");
 	
   cout << "inserting tee, sir... " << endl;
   s->insert("tee");
   s->insert("sir");
 	
-  s->visualPrint("   ");
+  s->visualPrint("   ", " / ", " \\ ");
 	
 }
